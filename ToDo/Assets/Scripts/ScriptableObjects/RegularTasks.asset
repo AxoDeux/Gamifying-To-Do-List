@@ -14,20 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalTasks: 0
   tasks:
-  - sdawds
-  - sadas
+  - 
+  - 
   - 
   - 
   - 
   taskStatus: 0000000000
-  newTextObjectNumber: 2
+  newTextObjectNumber: 0
   so:
     tasks:
-    - sdawds
-    - sadas
+    - 
+    - 
     - 
     - 
     - 
     status: 0000000000
-    newActiveTextObj: 2
+    newActiveTextObj: 0
     name: RegularTasks

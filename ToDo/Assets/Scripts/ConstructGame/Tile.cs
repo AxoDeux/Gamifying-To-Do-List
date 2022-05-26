@@ -26,7 +26,7 @@ public class Tile : MonoBehaviour
     {
         if(tileID == ID)
         {
-            Debug.Log("Found TIle");
+            //Debug.Log("Found TIle");
         }
     }
 
@@ -56,6 +56,6 @@ public class Tile : MonoBehaviour
     {
         Debug.Log(Time.time);
         Player.myPlayer.CreateCubeOnSpot(transform.position);
-    }*/
-
+    }
+    */
 }

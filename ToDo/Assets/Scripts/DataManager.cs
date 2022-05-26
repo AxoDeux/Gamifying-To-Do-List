@@ -8,12 +8,27 @@ public class DataManager : MonoBehaviour
 {
     [SerializeField] private ToDoContentScriptableObject[] days;
     [SerializeField] private Image streakImage;
+    [SerializeField] private TMP_Text streakScoreString;
+    [SerializeField] private TMP_Text dayString;
+
+
+    private int lastDayOfPlaying = 0;
+    private int currentDayNum = 0;
+    private string currentDay = "";
+    private int streakScore = 0;
 
     public SaveObject so;
+    public SaveGameObject svgo;
 
     private void Start()
     {
+        currentDayNum = System.DateTime.Now.DayOfYear;
+        dayString.text = System.DateTime.Now.DayOfWeek.ToString();
+
         LoadData();
+
+        svgo.SaveData(lastDayOfPlaying, streakScore, currentDay);
+        SaveManager.SaveGameData(svgo);
     }
 
     public void OnClickNewWeek()
@@ -44,8 +59,31 @@ public class DataManager : MonoBehaviour
             }
         }
 
+        SaveGameObject sgo = SaveManager.LoadGameData("SaveGameData");
+        if(sgo != null)
+        {
+            lastDayOfPlaying = sgo.LoadLastDayOfPlaying();
+            streakScore = sgo.LoadStreakLength();
+            CheckStreak(sgo);
+        }        
+
         Debug.Log("Loaded Data");
     }
 
     #endregion
+
+    private void CheckStreak(SaveGameObject sgo)
+    {
+        if (currentDayNum - 1 == lastDayOfPlaying)
+        {
+            streakScore++;
+        }
+        else if (currentDayNum != lastDayOfPlaying && currentDayNum - 1 == lastDayOfPlaying)        //shouldnt be last day shouldnt be current or prev day
+        {
+            streakScore = 0;
+        }
+        streakScoreString.text = streakScore.ToString();
+
+    }
+
 }
