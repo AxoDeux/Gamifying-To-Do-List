@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.EnhancedTouch;
 using TMPro;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -162,6 +163,10 @@ public class Player : MonoBehaviour
     }
 
     #endregion
+
+    public void ZoomUsingSlider(Slider slider) {                        
+        mainCamera.orthographicSize = 5 + (10 - 5) * slider.value;
+    }
 
     private void GetSpawnPoint(Finger finger)
     {
