@@ -7,6 +7,9 @@ public class FollowBezierRoute : MonoBehaviour
     private const string REQUIRED_OBJECT = "EnemyRequiredComponents";
     private const int ROUTE1_INDEX = 1;
     private const int ROUTE2_INDEX = 2;
+    private const int ROUTE3_INDEX = 3;
+    private const int ROUTE4_INDEX = 4;
+
     private const float SPEED = 0.2f;
 
     [SerializeField]
@@ -28,8 +31,19 @@ public class FollowBezierRoute : MonoBehaviour
 
     private void Start() {
         GameObject requiredComponentObject = GameObject.Find(REQUIRED_OBJECT);
-        routes[0] = requiredComponentObject.transform.GetChild(ROUTE1_INDEX);
-        routes[1] = requiredComponentObject.transform.GetChild(ROUTE2_INDEX);
+
+        int routeNum = Random.Range(0, 2);          //(inclusive, exclusive)
+        switch(routeNum) {
+            case 0:
+                routes[0] = requiredComponentObject.transform.GetChild(ROUTE1_INDEX);
+                routes[1] = requiredComponentObject.transform.GetChild(ROUTE2_INDEX);
+                break;
+
+            case 1:
+                routes[0] = requiredComponentObject.transform.GetChild(ROUTE3_INDEX);
+                routes[1] = requiredComponentObject.transform.GetChild(ROUTE4_INDEX);
+                break;
+        }
 
         routeToGo = 0;
         tParam = 0f;

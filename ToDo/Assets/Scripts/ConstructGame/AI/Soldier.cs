@@ -9,6 +9,8 @@ public class Soldier : MonoBehaviour
     private const float MAX_ROTATION = 30f;
     private const float MAX_TWEENTIME = 4f;
     private const float MIN_TWEENTIME = 2f;
+    private const float RADIUS = 5f;
+
 
     private enum State
     {
@@ -18,18 +20,24 @@ public class Soldier : MonoBehaviour
 
     private State state;
     [Tooltip("Requires a trigger to detect enemy")]
-    private GameObject target;
-
+    [SerializeField]
+    private LayerMask enemyLayerMask;
+    private List<GameObject> targets;
     private bool isTargetAcquired = false;
 
+    Vector3 currentRotation;
     private float timer1 = 2f;
+    float scoutDuration = 0f;
 
+    private void Awake() {
+        targets = new List<GameObject>();
+    }
     private void Start()
     {
         state = State.Scouting;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         switch (state)
         {
@@ -37,7 +45,7 @@ public class Soldier : MonoBehaviour
                 //Add soldier rotation to show scouting
                 if(timer1 < 0)
                 {
-                    timer1 = Scout();
+                    Scout();
                 }
                 timer1 -= Time.deltaTime;
                 //Find Enemy using distance/trigger
@@ -45,27 +53,12 @@ public class Soldier : MonoBehaviour
 
             case State.ShootingTarget:
                 //Begin shooting the acquired target
+                transform.LookAt(targets[0].transform);
                 //return to scouting once the target is destroyed
                 break;
         }
     }
 
-    private void OnTriggerStay(Collider other)
-    {
-        if (!other.CompareTag("Enemy")) { return; }
-
-        Vector3 enemyPos = other.gameObject.transform.position;
-
-        if(!isTargetAcquired &&
-            Vector3.Dot(enemyPos-transform.position, transform.position)>0)
-        {
-            isTargetAcquired = true;
-            target = other.gameObject;
-            state = State.Scouting;
-            Attack();
-
-        }
-    }
 
     private void Attack()
     {
@@ -73,13 +66,22 @@ public class Soldier : MonoBehaviour
         //change state once the enemy is destroyed
     }
 
-    private float Scout()
+    private void Scout()
     {
-        //transform.Rotate(new Vector3(0f, Random.Range(-30, 30), 0f));
-        float scoutDuration = Random.Range(MIN_TWEENTIME, MAX_TWEENTIME);
-        LeanTween.rotateY(this.gameObject, Random.Range(-MAX_ROTATION, MAX_ROTATION), scoutDuration);
+        scoutDuration = Random.Range(MIN_TWEENTIME, MAX_TWEENTIME);
+        currentRotation = transform.rotation.eulerAngles;
+        LeanTween.rotateY(this.gameObject, currentRotation.y + Random.Range(-MAX_ROTATION, MAX_ROTATION), scoutDuration);
 
-        return scoutDuration;
+        if(Physics.CheckSphere(transform.position, RADIUS, enemyLayerMask)) {
+            state = State.ShootingTarget;
+            Debug.Log("Target found");
+
+            Collider[] colliders = Physics.OverlapSphere(transform.position, RADIUS, enemyLayerMask);
+
+            foreach(Collider collider in colliders) {
+                targets.Add(collider.gameObject);
+            }
+        }
     }
 
 }

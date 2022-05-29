@@ -23,14 +23,6 @@ public class ObjectDirectionPoint : MonoBehaviour
         }
     }
 
-    /*private void OnEnable() {
-        gridCenter = new Vector3(3.5f, 0f, 3.5f);
-
-        float objectToGridCenterAngle = Vector2.SignedAngle(new Vector2(transform.position.x, transform.position.z),
-                                                            new Vector2(gridCenter.x, gridCenter.z));
-        transform.Rotate(Vector3.up, objectToGridCenterAngle);
-    }*/
-
     private void Update() {
         if(gameObject.CompareTag("Enemy")) {
             transform.LookAt(gridCenterObject);

@@ -12,9 +12,8 @@ GameObject:
   - component: {fileID: 6816277916647402179}
   - component: {fileID: 6233432997231297911}
   - component: {fileID: 835881675762136796}
-  - component: {fileID: 4129756930830787407}
   - component: {fileID: 7927958657526833412}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -80,18 +79,6 @@ MonoBehaviour:
   soldierLayer:
     serializedVersion: 2
     m_Bits: 64
---- !u!114 &4129756930830787407
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 431187271817372217}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e63d7dd6e9b5dd04680cf58efffbbd08, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   gridCenterObject: {fileID: 0}
 --- !u!114 &7927958657526833412
 MonoBehaviour:
@@ -118,7 +105,7 @@ GameObject:
   - component: {fileID: 7761200227697235636}
   - component: {fileID: 5735496429068193927}
   - component: {fileID: 55745710145047671}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,7 +197,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6731115937379499745}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EnemyObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -245,7 +232,7 @@ GameObject:
   - component: {fileID: 2163914571862406706}
   - component: {fileID: 1361029772479030223}
   - component: {fileID: 6185316714967126953}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -324,7 +311,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5328754158327110701}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ProjectileSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}

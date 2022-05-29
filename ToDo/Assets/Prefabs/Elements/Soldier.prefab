@@ -64,6 +64,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 6052763341833325062}
+  enemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!65 &2562296300252769944
 BoxCollider:
   m_ObjectHideFlags: 0
