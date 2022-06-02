@@ -20,7 +20,7 @@ MonoBehaviour:
   - 
   - 
   taskStatus: 0000000000
-  newTextObjectNumber: 0
+  newTextObjectNumber: -3
   so:
     tasks:
     - 
@@ -29,5 +29,5 @@ MonoBehaviour:
     - 
     - 
     status: 0000000000
-    newActiveTextObj: 0
+    newActiveTextObj: -3
     name: Sunday
