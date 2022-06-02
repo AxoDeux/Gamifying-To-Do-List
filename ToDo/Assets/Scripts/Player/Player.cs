@@ -266,7 +266,11 @@ public class Player : MonoBehaviour
         isConstructing = true;
     }
 
-    
+    public void VerticalMoveFocusPoint(Slider slider) {
+        gridCenter.transform.position = new Vector3(gridCenter.transform.position.x,
+                                                    gridCenter.transform.position.y + 10f * slider.value,
+                                                    gridCenter.transform.position.z);
+    }
 
 
     //Older Code--------------------------------------

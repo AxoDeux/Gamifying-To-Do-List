@@ -8,6 +8,7 @@ TagManager:
   - Element
   - Enemy
   - Soldier
+  - Projectile
   layers:
   - Default
   - TransparentFX

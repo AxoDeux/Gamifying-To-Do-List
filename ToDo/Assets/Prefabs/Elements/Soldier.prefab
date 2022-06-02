@@ -63,10 +63,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd14e44b76fbb2244b5c16cfe861e491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 6052763341833325062}
   enemyLayerMask:
     serializedVersion: 2
     m_Bits: 128
+  projectilePrefab: {fileID: 121134018793519933, guid: a822790b84aa6d142aa98de3384ed646, type: 3}
+  projectileSpawnPoint: {fileID: 5461703377797160050}
+  force: 2000
 --- !u!65 &2562296300252769944
 BoxCollider:
   m_ObjectHideFlags: 0
