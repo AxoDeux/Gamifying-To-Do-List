@@ -17,6 +17,4 @@ public class DayScript : MonoBehaviour
         toDoPrefab.SetActive(true);
         toDoContentScript.AddPreviousData(thisDayContent);
     }
-
-
 }

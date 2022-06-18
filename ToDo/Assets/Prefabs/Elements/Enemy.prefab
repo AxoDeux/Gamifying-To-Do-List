@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 336012775346404237}
   - component: {fileID: 6816277916647402179}
   - component: {fileID: 6233432997231297911}
-  - component: {fileID: 835881675762136796}
   - component: {fileID: 7927958657526833412}
   - component: {fileID: 5930515382962370955}
   m_Layer: 7
@@ -65,22 +64,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &835881675762136796
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 431187271817372217}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b522170f24976b4caebf0a768ece4b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  soldierLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  gridCenterObject: {fileID: 0}
 --- !u!114 &7927958657526833412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,6 +89,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f094ae26386c6a54aa3c22894e5bb906, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soldierLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  gridCenterObject: {fileID: 0}
+  projectilePrefab: {fileID: 121134018793519933, guid: 480f393e5e5f5d14d81a86cb373a0bab, type: 3}
+  force: 2000
 --- !u!1 &1744791797780319792
 GameObject:
   m_ObjectHideFlags: 0

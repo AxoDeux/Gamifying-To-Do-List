@@ -21,6 +21,7 @@ public class ToDoContentScriptableObject : ScriptableObject
 
     public void OnAddTask(string task)
     {
+        if(newTextObjectNumber >= 5) { return; }
         //Add the task to an empty string
         tasks[newTextObjectNumber] = task;
         newTextObjectNumber++;

@@ -14,20 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalTasks: 0
   tasks:
-  - awdawd
-  - awdaw
   - 
   - 
   - 
-  taskStatus: 0100000000
-  newTextObjectNumber: 2
+  - 
+  - 
+  taskStatus: 0000000000
+  newTextObjectNumber: 0
   so:
     tasks:
-    - awdawd
-    - awdaw
     - 
     - 
     - 
-    status: 0100000000
-    newActiveTextObj: 2
+    - 
+    - 
+    status: 0000000000
+    newActiveTextObj: 0
     name: Monday

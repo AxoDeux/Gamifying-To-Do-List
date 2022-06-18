@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1277631310616379048}
   - component: {fileID: 1647077755463437773}
   m_Layer: 0
-  m_Name: ProjectilePrefab
+  m_Name: EnemyProjectile
   m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -134,7 +134,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e381d6aba4b4c1b47bf92b3b17357d1f, type: 2}
+  - {fileID: 2100000, guid: ea70e8ead9e67f844bbcee0e32a25d3d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

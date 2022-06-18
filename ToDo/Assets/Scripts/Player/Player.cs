@@ -36,6 +36,9 @@ public class Player : MonoBehaviour
 
     private bool isConstructing = true;
 
+    private float oldHorizontalValue = 0f;
+    private float oldVerticalValue = 0f;
+
     //private CharacterInputs characterInputs;
     //private PlayerInput playerInput;
 
@@ -78,10 +81,9 @@ public class Player : MonoBehaviour
 
     }
 
-    private void Update()
-    {
+    /*private void Update() {
         debugTexts[0].text = $"Active fingers: {UnityEngine.InputSystem.EnhancedTouch.Touch.activeFingers.Count}";
-    }
+    }*/
 
     #endregion
 
@@ -93,15 +95,20 @@ public class Player : MonoBehaviour
         //fingers.Add(finger);
 
         previousPos = mainCamera.ScreenToViewportPoint(finger.screenPosition);
+
     }
 
     private void HandleFingerUp(Finger finger)
     {
         if(UnityEngine.InputSystem.EnhancedTouch.Touch.activeFingers.Count != 1) { return; }
-        GetSpawnPoint(finger);
-        isMoving = false;
         twoFingersUsed = false;
         prevDistance = 0f;
+
+        if(previousPos.x <= 0.2 || previousPos.x >= 0.8 || previousPos.y <= 0.2 || previousPos.y >= 0.8) { return; }
+
+        GetSpawnPoint(finger);
+        isMoving = false;
+
         //fingersDown--;
         //fingers.Remove(finger);
     }
@@ -117,6 +124,8 @@ public class Player : MonoBehaviour
 
         if (UnityEngine.InputSystem.EnhancedTouch.Touch.activeFingers.Count == 1 && !twoFingersUsed)
         {
+            if(previousPos.x <= 0.2 || previousPos.x >= 0.8 || previousPos.y <= 0.2 || previousPos.y >= 0.8) { return; }
+
             //rotate along y axis
 
             float rotationAroundYAxis = -direction.x * 180; // camera moves horizontally
@@ -268,8 +277,29 @@ public class Player : MonoBehaviour
 
     public void VerticalMoveFocusPoint(Slider slider) {
         gridCenter.transform.position = new Vector3(gridCenter.transform.position.x,
-                                                    gridCenter.transform.position.y + 10f * slider.value,
+                                                    gridCenter.transform.position.y + 4f * (slider.value - oldVerticalValue),
                                                     gridCenter.transform.position.z);
+
+        oldVerticalValue = slider.value;
+        mainCamera.transform.position = gridCenter.transform.position;
+
+    }
+
+    public void HorizontalMoveFocusPoint(Slider slider) {
+        Vector3 rightDirection = mainCamera.transform.right;
+
+        float currentX = rightDirection.x;
+        float currentZ = rightDirection.z;
+
+        float newX = (float)(4f * (slider.value - oldHorizontalValue) / Math.Sqrt(1 + Math.Pow(currentZ / currentX, 2)));
+        float newZ = newX * currentZ / currentX;
+
+        gridCenter.transform.position = new Vector3(gridCenter.transform.position.x + newX,
+                                                    gridCenter.transform.position.y,
+                                                    gridCenter.transform.position.z + newZ);
+        oldHorizontalValue = slider.value;
+
+        mainCamera.transform.position = gridCenter.transform.position;
     }
 
 

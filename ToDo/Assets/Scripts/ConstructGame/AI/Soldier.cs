@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Soldier : MonoBehaviour
 {
+    private const string PROJECTILE_TAG = "Projectile";
     private const float MAX_ROTATION = 30f;
     private const float MAX_TWEENTIME = 4f;
     private const float MIN_TWEENTIME = 2f;
     private const float RADIUS = 5f;
 
-
+    public delegate void OnSoldierKilledEventHandler(GameObject soldier);
+    public static event OnSoldierKilledEventHandler OnSoldierKilledEvent;
     private enum State
     {
         Scouting,
@@ -32,9 +34,11 @@ public class Soldier : MonoBehaviour
     private float force = 4f;
 
     private List<GameObject> targets;
+    private GameObject target = null;
     private bool isTargetAcquired = false;
 
     Vector3 currentRotation;
+    private int hit = 0;
     private float timer1 = 2f;
     private float timer2 = 2f;
 
@@ -66,6 +70,7 @@ public class Soldier : MonoBehaviour
                 if(timer1 < 0)
                 {
                     Scout();
+                    timer1 = 2f;
                 }
                 timer1 -= Time.deltaTime;
                 //Find Enemy using distance/trigger
@@ -73,9 +78,10 @@ public class Soldier : MonoBehaviour
 
             case State.ShootingTarget:
                 //Begin shooting the acquired target
-                transform.LookAt(targets[0].transform);
+                transform.LookAt(target.transform);
                 if(timer2 < 0) {
                     Attack();
+                    timer2 = 2f;
                 }
                 timer2 -= Time.deltaTime;
                 //return to scouting once the target is destroyed
@@ -88,14 +94,17 @@ public class Soldier : MonoBehaviour
     {
         //instantiate projectile through other script
         //change state once the enemy is destroyed
-        GameObject projectile = Instantiate(projectilePrefab, projectileSpawnPoint.transform);
-        Vector3 direction = targets[0].transform.position - projectileSpawnPoint.transform.position;
-        direction = direction / direction.magnitude;
+        Vector3 direction = target.transform.position - projectileSpawnPoint.transform.position;
+        direction /= direction.magnitude;
 
+        GameObject projectile = Instantiate(projectilePrefab, projectileSpawnPoint.transform.position, Quaternion.identity);
         Rigidbody projectileRB = projectile.GetComponent<Rigidbody>();
         projectileRB.AddForce(direction * force);
 
-        timer2 = 2f;
+        if(!target) {
+            state = State.Scouting;
+        }
+
     }
 
     private void Scout()
@@ -105,22 +114,35 @@ public class Soldier : MonoBehaviour
         LeanTween.rotateY(this.gameObject, currentRotation.y + Random.Range(-MAX_ROTATION, MAX_ROTATION), scoutDuration);
 
         if(Physics.CheckSphere(transform.position, RADIUS, enemyLayerMask)) {
-            state = State.ShootingTarget;
-            Debug.Log("Target found");
 
             Collider[] colliders = Physics.OverlapSphere(transform.position, RADIUS, enemyLayerMask);
 
             foreach(Collider collider in colliders) {
                 targets.Add(collider.gameObject);
             }
-        }
 
-        timer1 = 2f;
+            target = targets.ToArray()[0];
+            state = State.ShootingTarget;
+        }       
+
     }
 
     private void HandleEnemyKilled(GameObject enemyObject) {
-        targets.Remove(enemyObject);
-        state = State.Scouting;
+        if(target == enemyObject) {
+            targets.Remove(enemyObject);
+            target = null;
+            state = State.Scouting;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision) {
+        if(collision.gameObject.CompareTag(PROJECTILE_TAG)) {
+            hit++;
+            if(hit >= 2) {
+                OnSoldierKilledEvent.Invoke(gameObject);
+                Destroy(gameObject);
+            }
+        }
     }
 
 }
