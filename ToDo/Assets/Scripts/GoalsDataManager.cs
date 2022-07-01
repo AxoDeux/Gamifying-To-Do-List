@@ -10,16 +10,12 @@ public class GoalsDataManager : MonoBehaviour
 {
     private const string GOAL_NAME_TEXT = "t_GoalName";
     private const string GOAL_BUTTON = "b_GoalButton";
-    private const string SUB_GOAL_INPUTFIELD = "SG_name";
-    private const string SUB_GOAL_BUTTONS = "Buttons";
 
     [SerializeField] private GameObject goalPrefab = null;
     [SerializeField] private Transform goalsContentParent = null;
     [SerializeField] private GameObject inputField = null;
 
     [SerializeField] private GoalScriptableObject[] goals;
-    [SerializeField] private GameObject[] subGoalObjects = new GameObject[5];
-
     [SerializeField] private List<Goal> goalsList = new List<Goal>();
 
     public SaveGameObject saveGameObject;
@@ -31,15 +27,10 @@ public class GoalsDataManager : MonoBehaviour
     public TMP_InputField[] subGoalsNames = new TMP_InputField[5];
     public GameObject[] subGoalButtonsParent = new GameObject[5];
 
+    private Goal selectedGoal;
+
     private void Awake() {
         Screen.orientation = ScreenOrientation.LandscapeLeft;
-
-        for(int i = 0; i < subGoalObjects.Length; i++) {
-            if(subGoalObjects[i].transform.Find(SUB_GOAL_INPUTFIELD) && subGoalObjects[i].transform.Find(SUB_GOAL_BUTTONS)) {
-                subGoalsNames[i] = subGoalObjects[i].transform.Find(SUB_GOAL_INPUTFIELD).GetComponent<TMP_InputField>();
-                subGoalButtonsParent[i] = subGoalObjects[i].transform.Find(SUB_GOAL_BUTTONS).gameObject;
-            }
-        }
     }
 
     private void Start() {
@@ -48,6 +39,14 @@ public class GoalsDataManager : MonoBehaviour
 
         LoadData();
         CreateGoalPrefabs();
+    }
+
+    private void OnEnable() {
+        Goal.OnSelectGoalEvent += HandleGoalSelectEvent;
+    }
+
+    private void OnDisable() {
+        Goal.OnSelectGoalEvent -= HandleGoalSelectEvent;
     }
 
     public void OpenMainScene() {
@@ -121,5 +120,15 @@ public class GoalsDataManager : MonoBehaviour
         SaveManager.SaveGameData(saveGameObject);
 
         Debug.Log(saveGameObject.TotalGoals);
+    }
+
+    private void HandleGoalSelectEvent(Goal goal) {
+        selectedGoal = goal;
+    }
+
+    public void DeleteSelectedGoal() {
+        goalsList.Remove(selectedGoal);
+        Destroy(selectedGoal.gameObject);
+        selectedGoal = null;
     }
 }
