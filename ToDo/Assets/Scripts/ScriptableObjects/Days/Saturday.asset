@@ -15,12 +15,12 @@ MonoBehaviour:
   totalTasks: 0
   tasks:
   - awdaw
-  - adwad
-  - awdawss
-  - sssssssssss
   - 
-  taskStatus: 0001000100
-  newTextObjectNumber: 4
+  - 
+  - 
+  - 
+  taskStatus: 0000000000
+  newTextObjectNumber: 1
   so:
     tasks:
     - awdaw

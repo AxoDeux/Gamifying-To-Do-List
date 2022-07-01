@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 656967953556933246}
-  - component: {fileID: 1338797288470044822}
+  - component: {fileID: 6269842394354995874}
   m_Layer: 5
   m_Name: Goal
   m_TagString: Untagged
@@ -38,7 +38,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 900, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1338797288470044822
+--- !u!114 &6269842394354995874
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -47,11 +47,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3868732660566725312}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9699ad4efb9e0f44d8e7177b40ff3cb7, type: 3}
+  m_Script: {fileID: 11500000, guid: 6471034771130744685ebfd3c84a1d12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  toDoPrefab: {fileID: 0}
-  thisDayContent: {fileID: 0}
+  goalSO: {fileID: 0}
+  goalsDataManager: {fileID: 0}
+  goalButton: {fileID: 2205564770158058238}
+  goalText: {fileID: 3892735772372770346}
 --- !u!1 &5398527946049317151
 GameObject:
   m_ObjectHideFlags: 0
@@ -65,7 +67,7 @@ GameObject:
   - component: {fileID: 673268209781349500}
   - component: {fileID: 2205564770158058238}
   m_Layer: 5
-  m_Name: I_Name
+  m_Name: b_GoalButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -173,9 +175,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1338797288470044822}
-        m_TargetAssemblyTypeName: DayScript, Assembly-CSharp
-        m_MethodName: OnClickDay
+      - m_Target: {fileID: 6269842394354995874}
+        m_TargetAssemblyTypeName: Goal, Assembly-CSharp
+        m_MethodName: OnClickGoal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -272,7 +274,7 @@ GameObject:
   - component: {fileID: 8734779649545401782}
   - component: {fileID: 3892735772372770346}
   m_Layer: 5
-  m_Name: t_GoalCategory
+  m_Name: t_GoalName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

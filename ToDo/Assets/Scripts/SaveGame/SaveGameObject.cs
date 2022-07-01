@@ -1,10 +1,26 @@
 [System.Serializable]
 public class SaveGameObject
 {
-    public int lastDayOfPlaying;
     public string dayOfWeek;
     public string name = "SaveGameData";
-    public int streakLength;
+
+    private int lastDayOfPlaying;
+    public int LastDayOfPlaying {
+        get{ return lastDayOfPlaying; }
+    }
+
+    private int streakLength;
+    public int StreakLength{
+        get { return streakLength; }
+    }
+
+    private int totalGoals;
+    public int TotalGoals {
+        get { return totalGoals; }
+        set { totalGoals = value; }
+    }
+
+    public string[] goalNames = new string[1];
 
     public void SaveData(int lastDayNum, int streakScore, string dayName)
     {
@@ -12,13 +28,12 @@ public class SaveGameObject
         streakLength = streakScore;
     }
 
-    public int LoadLastDayOfPlaying()
-    {
-        return lastDayOfPlaying;
-    }
+    public void SaveGoalNames(Goal[] goals) {
+        totalGoals = goals.Length;
+        goalNames = new string[totalGoals];
 
-    public int LoadStreakLength()
-    {
-       return streakLength;
+        for(int i = 0; i < totalGoals; i++) {
+            goalNames[i] = goals[i].goalText.text;
+        }
     }
 }

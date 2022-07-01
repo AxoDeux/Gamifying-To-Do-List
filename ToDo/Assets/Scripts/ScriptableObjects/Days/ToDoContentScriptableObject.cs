@@ -52,15 +52,7 @@ public class ToDoContentScriptableObject : ScriptableObject
 
     private void SaveTasks()
     {
-        /*for(int i = 0; i < 5; i++)
-        {
-            PlayerPrefs.SetString($"{this.name}.task{i}", tasks[i]);
-        }
-
-        PlayerPrefs.SetInt($"{this.name}.newObjNum", newTextObjectNumber);*/
-
         so.SaveData(this);
-
         SaveManager.Save(so);
     }
 }

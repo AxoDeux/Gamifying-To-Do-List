@@ -10,4 +10,8 @@ public class OpenGameScene : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
+
+    public void OpenGoalScene() {
+        SceneManager.LoadScene(2);
+    }
 }

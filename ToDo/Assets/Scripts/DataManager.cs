@@ -27,8 +27,12 @@ public class DataManager : MonoBehaviour
 
         LoadData();
 
+        SaveGameObject sgo = SaveManager.LoadGameData("SaveGameData");
         svgo.SaveData(lastDayOfPlaying, streakScore, currentDay);
+        svgo.TotalGoals = sgo.TotalGoals;       //equating the svgo values to saved values to avoid loss of data.
+        svgo.goalNames = sgo.goalNames;
         SaveManager.SaveGameData(svgo);
+        Debug.Log(svgo.TotalGoals);
     }
 
     public void OnClickNewWeek()
@@ -62,12 +66,12 @@ public class DataManager : MonoBehaviour
         SaveGameObject sgo = SaveManager.LoadGameData("SaveGameData");
         if(sgo != null)
         {
-            lastDayOfPlaying = sgo.LoadLastDayOfPlaying();
-            streakScore = sgo.LoadStreakLength();
+            lastDayOfPlaying = sgo.LastDayOfPlaying;
+            streakScore = sgo.StreakLength;
             CheckStreak(sgo);
         }        
 
-        Debug.Log("Loaded Data");
+        Debug.Log("DataManager: Loaded Data");
     }
 
     #endregion
