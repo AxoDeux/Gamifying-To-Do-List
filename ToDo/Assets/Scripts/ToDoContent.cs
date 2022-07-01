@@ -31,6 +31,10 @@ public class ToDoContent : MonoBehaviour
 
     public void OnEditText(TMP_InputField inputField)
     {
+        if(string.IsNullOrWhiteSpace(inputField.text)){
+            inputField.text = null;
+            return;
+        }
         thisDay.OnAddTask(inputField.text);             //set task in the scriptable object itself
         AddTask(inputField.text);
         inputField.text = null;
@@ -38,11 +42,16 @@ public class ToDoContent : MonoBehaviour
 
     public void OnRemove(int textNumber)            //remove task
     {
+        if(thisDay.tasks[textNumber] == null) { return; }
+        Debug.Log("Removed Task");
         thisDay.tasks[textNumber] = null;
         thisDay.RearrangeTasks();
         AddPreviousData(thisDay);
 
         thisDay.newTextObjectNumber--;
+        if(thisDay.newTextObjectNumber < 0) {
+            thisDay.newTextObjectNumber = 0;
+        }
     }
 
     public void TaskComplete(int textNumber)
