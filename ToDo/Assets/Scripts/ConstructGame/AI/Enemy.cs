@@ -41,6 +41,7 @@ public class Enemy : MonoBehaviour
     private int hit = 0;
     private float timer1 = 1f;
     private float timer2 = 2f;
+    private float timer3 = 3f;
 
 
     private void Awake() {
@@ -89,6 +90,11 @@ public class Enemy : MonoBehaviour
                 break;
 
             case State.ShootingObject:
+                if(timer3< 0) {
+                    ShootObject();
+                    timer3 = 2f;
+                }
+                timer3 -= Time.deltaTime;
                 break;
         }
     }
@@ -131,6 +137,13 @@ public class Enemy : MonoBehaviour
         if(!target) {
             state = State.Scouting;
         }
+    }
+
+    private void ShootObject() {
+        //Check if soldier is not target
+        //find the special element
+        //position this enemy in proximity
+        //start shooting the special object.
     }
     
     private void HandleSoldierKilled(GameObject soldier) {

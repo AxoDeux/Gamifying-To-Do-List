@@ -19,10 +19,14 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject[] elementsArray;
     private int activeElement = 0;
 
+    [SerializeField] private Slider[] slidersArray = new Slider[2];
+
     [SerializeField] private TMP_Text[] debugTexts;
 
     [SerializeField] private Camera mainCamera = null;
     [SerializeField] private GameObject gridCenter = null;
+    [SerializeField] private GameObject gridCenterObject = null;
+
     [SerializeField] private float distanceToTarget = 0f;
 
     private Vector3 spawnPoint = new Vector3(0,0,0);
@@ -36,6 +40,7 @@ public class Player : MonoBehaviour
 
     private bool isConstructing = true;
 
+    private Vector3 gridCenterPos;
     private float oldHorizontalValue = 0f;
     private float oldVerticalValue = 0f;
 
@@ -47,6 +52,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         myPlayer = this;
+        gridCenterPos = new Vector3(4, 0, 4); ;
         //playerInput = GetComponent<PlayerInput>();
 
         //characterInputs = new CharacterInputs();
@@ -300,6 +306,16 @@ public class Player : MonoBehaviour
         oldHorizontalValue = slider.value;
 
         mainCamera.transform.position = gridCenter.transform.position;
+    }
+
+    public void Recenter() {
+        gridCenter.transform.position = gridCenterPos;
+        mainCamera.transform.position = gridCenter.transform.position;
+        foreach(Slider slider in slidersArray) {
+            slider.value = (slider.maxValue - slider.minValue) / 2;
+        }
+        //horizontal.value = (horizontal.maxValue - horizontal.minValue) / 2;
+        //vertical.value = (vertical.maxValue - vertical.minValue) / 2;
     }
 
 

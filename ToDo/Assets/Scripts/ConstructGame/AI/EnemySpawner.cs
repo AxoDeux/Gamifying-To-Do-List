@@ -17,7 +17,6 @@ public class EnemySpawner : MonoBehaviour
             spawnTransforms.Add(childTransforms[i]);
         }
 
-        Debug.Log($"Child Transforms = {childTransforms.Length} and spawnTransforms = {spawnTransforms.Count}");
         spawnPoints = new List<Vector3>();
 
         for(int i = 0; i<spawnTransforms.Count; i++) {
@@ -26,9 +25,9 @@ public class EnemySpawner : MonoBehaviour
         spawnPoints.Remove(Vector3.zero);
     }
 
-    private void Start() {
+    public void OnFightClicked() {
         for(int i = 0; i < spawnPoints.Count; i++) {
-            Instantiate(EnemyPrefabs[0], spawnTransforms[i+1]);
+            Instantiate(EnemyPrefabs[0], spawnTransforms[i + 1]);
         }
     }
 }
