@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2607927528197243620}
+  - component: {fileID: 5728879349912181218}
   m_Layer: 5
   m_Name: SubGoal
   m_TagString: Untagged
@@ -27,8 +28,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 3650896962720154846}
   - {fileID: 7543528654515539407}
+  - {fileID: 3650896962720154846}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -37,6 +38,26 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5728879349912181218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1617530356787964530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd07e89bb824eac4ea369547e081662f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  subGoalName: {fileID: 2454962562842470793}
+  subGoalButtons:
+  - {fileID: 1523383986118851631}
+  - {fileID: 8045344357092303173}
+  - {fileID: 6929831385440869700}
+  - {fileID: 2065171265612681177}
+  - {fileID: 7469449158621703481}
+  goalScriptableObject: {fileID: 0}
 --- !u!1 &3546108800179164237
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,7 +177,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 482188751307782003}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5728879349912181218}
+        m_TargetAssemblyTypeName: SubGoal, Assembly-CSharp
+        m_MethodName: OnClickButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 7469449158621703481}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4409461629375437992
 GameObject:
   m_ObjectHideFlags: 0
@@ -276,7 +309,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2929946828300292682}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5728879349912181218}
+        m_TargetAssemblyTypeName: SubGoal, Assembly-CSharp
+        m_MethodName: OnClickButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 6929831385440869700}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4894382756097910104
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,7 +441,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7886332366124499127}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5728879349912181218}
+        m_TargetAssemblyTypeName: SubGoal, Assembly-CSharp
+        m_MethodName: OnClickButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8045344357092303173}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5380287910565939420
 GameObject:
   m_ObjectHideFlags: 0
@@ -427,7 +484,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2607927528197243620}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -650,7 +707,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7292301699809508654}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5728879349912181218}
+        m_TargetAssemblyTypeName: SubGoal, Assembly-CSharp
+        m_MethodName: OnClickButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1523383986118851631}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8202142907218145328
 GameObject:
   m_ObjectHideFlags: 0
@@ -770,7 +839,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8433186816459210059}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5728879349912181218}
+        m_TargetAssemblyTypeName: SubGoal, Assembly-CSharp
+        m_MethodName: OnClickButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2065171265612681177}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8370452840048298748
 GameObject:
   m_ObjectHideFlags: 0
@@ -805,7 +886,7 @@ RectTransform:
   - {fileID: 8235910509667229029}
   - {fileID: 372462912731413403}
   m_Father: {fileID: 2607927528197243620}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

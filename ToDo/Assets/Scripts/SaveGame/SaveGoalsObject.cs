@@ -19,6 +19,7 @@ public class SaveGoalsObject {
         data.goalName = goalName;
         data.newSubGoalNum = nextSubGoalNum;
         for(int i = 0; i < data.subGoalNames.Length; i++) {
+
             data.subGoalNames[i] = subGoalNames[i];
             data.subGoalLevel[i] = subGoalDoneLevel[i];
         }

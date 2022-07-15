@@ -54,14 +54,6 @@
                     "interactions": ""
                 },
                 {
-                    "name": "TouchPress",
-                    "type": "Button",
-                    "id": "70f378ed-feaa-4eeb-a4d7-deb307e8480b",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
                     "name": "TouchPosition",
                     "type": "PassThrough",
                     "id": "923b3475-5d8f-4210-89de-0720cff6cb32",
@@ -233,17 +225,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "TouchInput",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ae2a70d5-8f6a-4d07-885a-b24e173d1f0c",
-                    "path": "<Touchscreen>/primaryTouch/press",
-                    "interactions": "Press(behavior=2)",
-                    "processors": "",
-                    "groups": "",
-                    "action": "TouchPress",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
